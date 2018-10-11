@@ -12,43 +12,7 @@ function add ( numbers) {
 		var numbersArray = numbers.split(",");
 		var numbersArray = numbers.split(/[\n,]/g);
 		
-		
-		var negatives = '';
-		var size = 0;
-		var count = 0;
-		for(var i=0; i < numbersArray.length;i++)
-	{
-		
-		size++;
-			
-	}
-	
-		for(var i=0; i < numbersArray.length;i++)
-	{
-		
-		if(parseInt(numbersArray[i]) < 0)
-		{
-			if (i < size-1)
-			{
-				negatives += parseInt(numbersArray[i]) + ',';
-				
-			}
-			else
-			{
-				negatives += parseInt(numbersArray[i])
-			}
-				
-			
-			
-		}
-		
-			
-	}
-		if (negatives.length > 0) {
-		
-			throw new Error("Negatives not allowed: "+negatives);
-			
-		}
+		throwIfNegativeNumbers(numbersArray);
 		
 		return sum(numbersArray);
 	}
@@ -61,28 +25,35 @@ function add ( numbers) {
 }
 
 
-function findNegativeNumber(numbersArray) 
+function throwIfNegativeNumbers(numbersArray) 
 {
 	
 	var negatives = '';
-	
+	var count = 0;
+		
 	for(var i=0; i < numbersArray.length;i++)
 	{
 		
-		
 		if(parseInt(numbersArray[i]) < 0)
 		{
-			negatives += ' ' + parseInt(numbersArray[i]);
+			if (i < numbersArray.length-1)
+			{
+				negatives += parseInt(numbersArray[i]) + ',';
+				
+			}
+			else
+			{
+				negatives += parseInt(numbersArray[i])
+			}
+			
 		}
+		
 			
 	}
 		if (negatives.length > 0) {
 		
-			throw 'Negatives not allowed:' + negatives;
-		}
-		else 
-		{
-			return numbersArray;
+			throw new Error("Negatives not allowed: "+negatives);
+			
 		}
 		
 	
