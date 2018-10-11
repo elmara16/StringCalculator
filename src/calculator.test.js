@@ -20,3 +20,10 @@ it("should return sumerize multiple numbers", () => {
 it("should handle new lines between numbers", () => {
 	expect(add("1\n2,3")).toBe(6);
 });
+
+
+test('throws if negative numbers and lists themg', () => {
+  expect(() => {
+    add('-1,2,-5');
+  }).toThrow( new Error ("Negatives not allowed: -1,-5"))
+});
