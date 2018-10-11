@@ -27,3 +27,7 @@ test('throws if negative numbers and lists themg', () => {
     add('-1,2,-5');
   }).toThrow( new Error ("Negatives not allowed: -1,-5"))
 });
+
+it("Bigger numbers than 1000 should be ignored", () => {
+	expect(add("1001,2,10000,3")).toBe(5);
+});
