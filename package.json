@@ -1,0 +1,22 @@
+{
+  "name": "stringcalculator",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/elmara16/StringCalculator.git"
+  },
+  "author": "elmar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/elmara16/StringCalculator/issues"
+  },
+  "homepage": "https://github.com/elmara16/StringCalculator#readme",
+  "devDependencies": {
+    "jest": "^23.6.0"
+  }
+}
