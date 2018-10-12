@@ -1,7 +1,5 @@
 function add ( numbers) {
 	
-	
-	
 	if(numbers == "")
 	{
 		return 0;
@@ -9,9 +7,21 @@ function add ( numbers) {
 	
 	if(numbers.includes(",") | numbers.includes("\n"))
 	{
-		var numbersArray = numbers.split(",");
-		var numbersArray = numbers.split(/[\n,]/g);
 		
+		
+		
+		var delimiter = '\n|,';
+		
+		if(numbers.includes("//")){
+			delimiter += numbers.substring(2, numbers.indexOf('\n'));
+			numbers = numbers.substring(('\n'+1));
+		}
+		 else {
+				delimiters = '\n|,';
+			}
+		
+		 var numbersArray = numbers.split(new RegExp(delimiters));
+		 
 		throwIfNegativeNumbers(numbersArray);
 		
 		return sum(numbersArray);
