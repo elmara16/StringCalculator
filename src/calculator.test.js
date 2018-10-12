@@ -32,6 +32,6 @@ it("Bigger numbers than 1000 should be ignored", () => {
 	expect(add("1001,2,10000,3")).toBe(5);
 });
 
-it("delimiter", () => {
-	expect(add("//;\n1,2")).toBe(3);
+it("should be able to handle diffrent delimiter", () => {
+	expect(add("//;\n1;2")).toBe(3);
 });

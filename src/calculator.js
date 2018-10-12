@@ -5,32 +5,20 @@ function add ( numbers) {
 		return 0;
 	}
 	
-	if(numbers.includes(",") | numbers.includes("\n"))
-	{
-		
-		
-		
-		var delimiter = '\n|,';
+		var delimiter = /[\n,]/g;
 		
 		if(numbers.includes("//")){
-			delimiter += numbers.substring(2, numbers.indexOf('\n'));
-			numbers = numbers.substring(('\n'+1));
+			delimiter = numbers.substring(2,3);
+			numbers = numbers.substring(4);
 		}
-		 else {
-				delimiters = '\n|,';
-			}
 		
-		 var numbersArray = numbers.split(new RegExp(delimiters));
+		
+		 var numbersArray = numbers.split(delimiter);
 		 
 		throwIfNegativeNumbers(numbersArray);
 		
 		return sum(numbersArray);
-	}
-	else
-	{
-		return parseInt(numbers);
-	}
-
+	
 	
 }
 
