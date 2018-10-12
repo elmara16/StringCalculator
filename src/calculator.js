@@ -5,24 +5,30 @@ function add ( numbers) {
 		return 0;
 	}
 	
-		var delimiter = /[\n,]/g;
+	var delimiter = delimiterHandler("", numbers);
+		
+	var numbersArray = numbers.split(delimiter);
+		 
+	throwIfNegativeNumbers(numbersArray);
+		
+	return sum(numbersArray);
+		
+}
+
+// Desides which delimiter/s to use
+function delimiterHandler(delimiter, numbers)
+{
+	var delimiter = /[\n,]/g;
 		
 		if(numbers.includes("//")){
 			delimiter = numbers.substring(2,3);
 			numbers = numbers.substring(4);
 		}
 		
-		
-		 var numbersArray = numbers.split(delimiter);
-		 
-		throwIfNegativeNumbers(numbersArray);
-		
-		return sum(numbersArray);
-	
-	
+		return delimiter;
 }
 
-
+// Throws exception if numbersArray has negatives
 function throwIfNegativeNumbers(numbersArray) 
 {
 	
@@ -45,8 +51,7 @@ function throwIfNegativeNumbers(numbersArray)
 			}
 			
 		}
-		
-			
+				
 	}
 		if (negatives.length > 0) {
 		
@@ -56,6 +61,8 @@ function throwIfNegativeNumbers(numbersArray)
 		
 	
 }
+
+// Calcutaltes sum of numbersArray 
 
 function sum(numbersArray)
 {
