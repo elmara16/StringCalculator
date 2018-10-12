@@ -1,4 +1,4 @@
-function add ( numbers) {
+function add(numbers) {
 	
 	if(numbers == "")
 	{
@@ -15,17 +15,25 @@ function add ( numbers) {
 		
 }
 
-// Desides which delimiter/s to use
+// Coverts number to integer
+function toInt(number) 
+{
+	return parseInt(number);
+}
+
+// Decides which delimiter/s to use
 function delimiterHandler(delimiter, numbers)
 {
+	// base delimiters
 	var delimiter = /[\n,]/g;
+	
+	if(numbers.includes("//"))
+	{
+		delimiter = numbers.substring(2,3);
+		numbers = numbers.substring(4);
+	}
 		
-		if(numbers.includes("//")){
-			delimiter = numbers.substring(2,3);
-			numbers = numbers.substring(4);
-		}
-		
-		return delimiter;
+	return delimiter;
 }
 
 // Throws exception if numbersArray has negatives
@@ -33,21 +41,20 @@ function throwIfNegativeNumbers(numbersArray)
 {
 	
 	var negatives = '';
-	var count = 0;
 		
 	for(var i=0; i < numbersArray.length;i++)
 	{
 		
-		if(parseInt(numbersArray[i]) < 0)
+		if(toInt(numbersArray[i]) < 0)
 		{
 			if (i < numbersArray.length-1)
 			{
-				negatives += parseInt(numbersArray[i]) + ',';
+				negatives += toInt(numbersArray[i]) + ',';
 				
 			}
 			else
 			{
-				negatives += parseInt(numbersArray[i])
+				negatives += toInt(numbersArray[i])
 			}
 			
 		}
@@ -55,7 +62,7 @@ function throwIfNegativeNumbers(numbersArray)
 	}
 		if (negatives.length > 0) {
 		
-			throw new Error("Negatives not allowed: "+negatives);
+			throw new Error("Negatives not allowed: "+ negatives);
 			
 		}
 		
@@ -72,7 +79,7 @@ function sum(numbersArray)
 	{	
 		if(numbersArray[i] < 1001)
 		{
-			total += parseInt(numbersArray[i]);
+			total += toInt(numbersArray[i]);
 		}
 	
 	}
